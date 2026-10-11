@@ -1,0 +1,2 @@
+ALTER TABLE personen
+ADD COLUMN beruf

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator</title>
+    <link rel="stylesheet" href="/style.css">
+
+</head>
+
+<body>
+
+<div class="header-box">
+    <h1>Mein Ticketsystem</h1>
+    <a href="/admin">Administrator</a>
+    <a href="/user">User</a>
+    <a href="/logout">Logout</a>
+    <p>Hier werden alle Tickets angezeigt.</p>
+
+
+    
+
+
+    <h1>Alle Tickets</h1>
+</div>
+<div class="filter-box">
+
+    <form action="/admin" method="GET">
+
+        <label for="statusFilter">Status:</label>
+
+        <select name="status" id="statusFilter">
+
+            <option value="" <%=!status ? "selected" : "" %>>
+                Alle
+            </option>
+
+            <option value="neu" <%=status==="neu" ? "selected" : "" %>>
+                Neu
+            </option>
+
+            <option value="in Bearbeitung" <%=status==="in Bearbeitung" ? "selected" : "" %>>
+                in Bearbeitung
+            </option>
+
+            <option value="geloest" <%=status==="geloest" ? "selected" : "" %>>
+                Gelöst
+            </option>
+
+        </select>
+
+        <label for="prioritaetFilter">Priorität:</label>
+
+        <select name="prioritaet" id="prioritaetFilter">
+
+            <option value="" <%=!prioritaet ? "selected" : "" %>>
+                Alle
+            </option>
+
+            <option value="Niedrig" <%=prioritaet==="Niedrig" ? "selected" : "" %>>
+                Niedrig
+            </option>
+
+            <option value="Mittel" <%=prioritaet==="Mittel" ? "selected" : "" %>>
+                Mittel
+            </option>
+
+            <option value="Hoch" <%=prioritaet==="Hoch" ? "selected" : "" %>>
+                Hoch
+            </option>
+
+        </select>
+        <button type="submit">Filtern</button>
+    </form>
+
+</div>
+
+<div class="suche-box">
+    <hr>
+    <form action="/admin" method="get">
+
+        <p>Hier suchen gewünschte Ticket:</p>
+        <label for="suche">Suche</label>
+        <input type="text" name="suche" id="suche" placeholder="suche" value="<%= suche || '' %>">
+        <button type="submit">Suche</button>
+
+    </form>
+
+    <div>
+
+
+
+
+
+        <% if (tickets.length===0) { %>
+            <h2>Keine Tickets gefunden</h2>
+            <% } %>
+
+                <% tickets.forEach(ticket=> {%>
+                    <div class="ticket-card">
+
+
+                    <h2>Titel:<%= ticket.titel %>
+                    </h2>
+                    <a href="/tickets/<%= ticket.id %>">Details anzeigen</a>
+                    
+                    <p>Kategorie:<%= ticket.kategorie %></p>
+                    <p>Prioritaet:<%= ticket.prioritaet %>
+                    </p>
+                    <p>Status:<%= ticket.status %>
+
+                    </p>
+                    <p>Erstellt von: <%= ticket.benutzer %></p>
+                    <p>Erstellt am: <%= ticket.erstellt_am %></p>
+
+                    <form action="/tickets/<%= ticket.id %>/status" method="POST">
+
+
+
+
+                        <select name="status">
+
+                            <option value="neu" <%=ticket.status==="neu" ?"selected":""%>>
+                                Neu
+                            </option>
+                            <option value="in Bearbeitung" <%=ticket.status==="in Bearbeitung" ?"selected":""%>
+                                >in Bearbeitung</option>
+
+                            <option value="geloest" <%=ticket.status==="geloest" ?"selected":"" %>
+                                >geloest</option>
+
+
+
+
+                        </select>
+
+                        <button type="submit">Status ändern</button>
+
+
+
+                    </form>
+
+                    
+</div>
+
+                    <% });%>
+
+    </div>
+    </div>
+</body>
+
+</html>

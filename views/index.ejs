@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ticketsystem</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+    <h1>Mein Ticketsystem</h1>
+
+    <a href="/admin">Administrator</a>
+    <a href="/user">User</a>
+
+    <h2>Ticket erstellen</h2>
+
+    <form action="/tickets" method="POST">
+
+        <label>Titel:</label>
+        <input type="text" name="titel">
+
+        <br><br>
+
+        <label>Kategorie:</label>
+        <input type="text" name="kategorie">
+
+        <br><br>
+
+        <label>Priorität:</label>
+
+        <select name="prioritaet">
+            <option value="Niedrig">Niedrig</option>
+            <option value="Mittel">Mittel</option>
+            <option value="Hoch">Hoch</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit">Ticket erstellen</button>
+
+    </form>
+
+
+    <h2>Meine Tickets</h2>
+
+    <% tickets.forEach(ticket => { %>
+
+        <h3><%= ticket.titel %></h3>
+
+        <p>Kategorie: <%= ticket.kategorie %></p>
+
+        <p>Priorität: <%= ticket.prioritaet %></p>
+
+        <p>Status: <%= ticket.status %></p>
+
+        <hr>
+
+    <% }); %>
+
+</body>
+
+</html>

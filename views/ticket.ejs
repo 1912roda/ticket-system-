@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket</title>
+     <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="ticket-info-box">
+    <h1>Ticket Details</h1>
+    <!DOCTYPE html>
+    <html lang="de">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Ticket Details</title>
+    </head>
+
+    <body>
+
+
+
+        <h2>
+            <%= ticket.titel %>
+        </h2>
+
+        <form action="/tickets/<%= ticket.id %>/titel" method="POST">
+
+            <input type="text" name="titel" value="<%= ticket.titel %>">
+
+            <button type="submit">Titel ändern</button>
+
+        </form>
+        <p>Kategorie: <%= ticket.kategorie %>
+        </p>
+        <p>Beschreibung: <%= ticket.beschreibung %>
+        </p>
+       <% if (ticket.anhang) { %>
+    <p>
+        Anhang:
+        <a href="/uploads/<%= ticket.anhang %>" target="_blank">
+            Datei öffnen
+        </a>
+    </p>
+<% } %>
+
+<% if (ticket.anhang && (
+    ticket.anhang.endsWith(".png") ||
+    ticket.anhang.endsWith(".jpg") ||
+    ticket.anhang.endsWith(".jpeg")
+)) { %>
+
+    <img 
+        src="/uploads/<%= ticket.anhang %>" 
+        alt="Ticket Anhang"
+        width="300"
+    >
+
+<% } %>
+        <p>Priorität: <%= ticket.prioritaet %>
+        </p>
+        <p>Status: <%= ticket.status %>
+        </p>
+        </div>
+
+        <div class="admin-speicher-box">
+        <h3>Admin-Kommentar</h3>
+
+<form action="/tickets/<%= ticket.id %>/kommentar" method="POST">
+
+    <textarea name="admin_kommentar" rows="5" cols="50"><%= ticket.admin_kommentar || "" %></textarea>
+
+    <br><br>
+
+    <button type="submit">Kommentar speichern</button>
+
+</form>
+</div>
+
+<div class="status-info-box">
+        <form action="/tickets/<%= ticket.id %>/status" method="POST">
+
+            <select name="status">
+
+                <option value="neu" <%=ticket.status==="neu" ? "selected" : "" %>>
+                    Neu
+                </option>
+
+                <option value="in Bearbeitung" <%=ticket.status==="in Bearbeitung" ? "selected" : "" %>>
+                    In Bearbeitung
+                </option>
+
+                <option value="geloest" <%=ticket.status==="geloest" ? "selected" : "" %>>
+                    Gelöst
+                </option>
+
+            </select>
+
+            <button type="submit">Status ändern</button>
+
+        </form>
+        
+
+
+
+        <p>Erstellt von: <%= ticket.benutzer %>
+        </p>
+        <p>Erstellt am: <%= ticket.erstellt_am %></p>
+        
+
+  <form action="/tickets/<%= ticket.id %>/delete" method="POST">
+        <button type="submit">Ticket löschen</button>
+    </form>
+   
+
+    <br>
+        <a href="/admin">Zurück zum Admin-Bereich</a>
+
+ </div>
+    </body>
+
+    </html>
+</body>
+
+</html>

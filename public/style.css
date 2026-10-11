@@ -1,0 +1,91 @@
+.header-box{
+    background-color: beige;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+.filter-box{
+    background-color: rgb(118, 149, 153);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+}
+.suche-box{
+    background-color: rgb(232, 232, 218);
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+  
+}
+.ticket-card {
+    max-width: 700px;
+    margin: 15px auto;
+    padding: 20px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    background-color: #f7f7f2;
+    text-align: left;
+}
+.user-header{
+    margin-left: 250px;
+    max-width: 750px;
+    background-color: rgb(191, 208, 203);
+    text-align: center;
+}
+.user-box{
+    background-color: rgb(203, 216, 209);
+    text-align: center;
+    max-width: 700px;
+    margin: 15px auto;
+}
+.user-ticket-box{
+    background-color: azure;
+    border: 5px solid black;
+    max-width: 700px;
+    margin: 15px auto;
+    padding: 20px;
+    text-align: center;
+}
+.login-box{
+    background-color: azure;
+    text-align: center;
+}
+.login-box button{
+     border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(171, 195, 195);
+}
+.login-box label {
+    display: inline-block;
+    width: 130px;
+    text-align: right;
+}
+.register-box{
+    background-color: beige;
+     text-align: center;
+}
+.register-box label{
+    display: inline-block;
+    width: 130px;
+    text-align: right;
+}
+.register-box button{
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: rgb(171, 195, 195);
+    
+}
+.ticket-info-box{
+     background-color: beige;
+     text-align: center;
+}
+.admin-speicher-box{
+    background-color: beige;
+     text-align: center;
+}
+.status-info-box{
+    background-color: beige;
+     text-align: center;
+}
